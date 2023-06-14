@@ -42,7 +42,7 @@ namespace WCFServiceLibrary.DrinkObjs
             operationsMade = 0;
         }
 
-        internal void SellDrink(string drinkName)
+        internal string SellDrink(string drinkName)
         {
             Drink drinkToSell = drinks.FirstOrDefault(d => d.name.ToLower() == drinkName.ToLower());
 
@@ -52,7 +52,9 @@ namespace WCFServiceLibrary.DrinkObjs
                 operationsMade++;
                 drinkToSell.count--;
                 if (drinkToSell.count == 0) drinks.Remove(drinkToSell);
+                return string.Format("{0} sold.", drinkName);
             }
+            return string.Format("There's no {0} to sell",drinkName);
         }
 
         internal string AddDrink(Drink drink) 

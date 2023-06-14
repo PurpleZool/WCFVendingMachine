@@ -18,13 +18,15 @@ namespace WCFServiceLibrary
         [OperationContract]
         void DeleteDrinks();
         [OperationContract]
+        string SetCash(double newCash);
+        [OperationContract]
         void ResetMachine();
         [OperationContract]
         VendingMachine GetVendingObj();
         [OperationContract]
         string GetStatus();
         [OperationContract]
-        void SellDrink(string drinkName);
+        string SellDrink(string drinkName);
         [OperationContract]
         string AddDrink(Drink drink);
 

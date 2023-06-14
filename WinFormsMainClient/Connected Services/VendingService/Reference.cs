@@ -189,6 +189,12 @@ namespace WinFormsMainClient.VendingService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/DeleteDrinks", ReplyAction="http://tempuri.org/IMainService/DeleteDrinksResponse")]
         System.Threading.Tasks.Task DeleteDrinksAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/SetCash", ReplyAction="http://tempuri.org/IMainService/SetCashResponse")]
+        string SetCash(double newCash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/SetCash", ReplyAction="http://tempuri.org/IMainService/SetCashResponse")]
+        System.Threading.Tasks.Task<string> SetCashAsync(double newCash);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/ResetMachine", ReplyAction="http://tempuri.org/IMainService/ResetMachineResponse")]
         void ResetMachine();
         
@@ -208,10 +214,10 @@ namespace WinFormsMainClient.VendingService {
         System.Threading.Tasks.Task<string> GetStatusAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/SellDrink", ReplyAction="http://tempuri.org/IMainService/SellDrinkResponse")]
-        void SellDrink(string drinkName);
+        string SellDrink(string drinkName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/SellDrink", ReplyAction="http://tempuri.org/IMainService/SellDrinkResponse")]
-        System.Threading.Tasks.Task SellDrinkAsync(string drinkName);
+        System.Threading.Tasks.Task<string> SellDrinkAsync(string drinkName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/AddDrink", ReplyAction="http://tempuri.org/IMainService/AddDrinkResponse")]
         string AddDrink(WinFormsMainClient.VendingService.Drink drink);
@@ -271,6 +277,14 @@ namespace WinFormsMainClient.VendingService {
             return base.Channel.DeleteDrinksAsync();
         }
         
+        public string SetCash(double newCash) {
+            return base.Channel.SetCash(newCash);
+        }
+        
+        public System.Threading.Tasks.Task<string> SetCashAsync(double newCash) {
+            return base.Channel.SetCashAsync(newCash);
+        }
+        
         public void ResetMachine() {
             base.Channel.ResetMachine();
         }
@@ -295,11 +309,11 @@ namespace WinFormsMainClient.VendingService {
             return base.Channel.GetStatusAsync();
         }
         
-        public void SellDrink(string drinkName) {
-            base.Channel.SellDrink(drinkName);
+        public string SellDrink(string drinkName) {
+            return base.Channel.SellDrink(drinkName);
         }
         
-        public System.Threading.Tasks.Task SellDrinkAsync(string drinkName) {
+        public System.Threading.Tasks.Task<string> SellDrinkAsync(string drinkName) {
             return base.Channel.SellDrinkAsync(drinkName);
         }
         

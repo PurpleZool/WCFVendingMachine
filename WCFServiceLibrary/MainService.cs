@@ -8,8 +8,9 @@ namespace WCFServiceLibrary
 {
     public class MainService : IMainService
     {
+        private static string someFreeFolder = @"C:\FreeFolder";
+        private static string savePath = Path.Combine(someFreeFolder,"machineSave.txt");
 
-        private static string savePath = Path.Combine(@"C:\FreeFolder","machineSave.txt");
 
         #region CONTRACT METHODS
 
@@ -26,6 +27,15 @@ namespace WCFServiceLibrary
             vendor.DeleteDrinks();
             SaveData(vendor);
         }
+
+        public string SetCash(double newCash) 
+        {
+            VendingMachine vendor = GetVendingObj();
+            vendor.totalAmoun = newCash;
+            SaveData(vendor);
+            return string.Format("New cash set to {0}", newCash);
+        }
+
         public void ResetMachine()
         {
             VendingMachine vendor = ReadData();
@@ -46,11 +56,13 @@ namespace WCFServiceLibrary
             return sb.ToString();
         }
 
-        public void SellDrink(string drinkName) 
+        public string SellDrink(string drinkName) 
         {
+            string feedBack;
             VendingMachine vendor = ReadData();
-            vendor.SellDrink(drinkName);
+            feedBack = vendor.SellDrink(drinkName);
             SaveData(vendor);
+            return feedBack;
         }
         public string AddDrink(Drink drink)
         {
@@ -104,6 +116,7 @@ namespace WCFServiceLibrary
         {
             if (!File.Exists(savePath)) 
             {
+                if (!Directory.Exists(someFreeFolder)) Directory.CreateDirectory(someFreeFolder);
                 InitializeSave();
             }    
         }

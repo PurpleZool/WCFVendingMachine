@@ -12,13 +12,13 @@ using WinFormsMainClient.VendingService;
 namespace WinFormsMainClient
 {
 
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private List<string> outputLines = new List<string>();
         private VendingService.MainServiceClient client;
 
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -36,12 +36,14 @@ namespace WinFormsMainClient
             }
             builder.AppendLine("*****************\n       ALL DRINKS SHOWN \n*****************");
             ConsoleWriteLine(builder.ToString());
+            RefreshDrinksGrid();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             client = new VendingService.MainServiceClient();
             ConsoleWriteLine("EndPoint Attached at:" + client.Endpoint.Address.ToString());
+            RefreshDrinksGrid();
             ConsoleWriteLine("WELCOME TO THE VENDING MACHINE");
         }
 
@@ -57,11 +59,14 @@ namespace WinFormsMainClient
         {
             client.DeleteDrinks();
             ConsoleWriteLine("DRINKS DELETED");
+            RefreshDrinksGrid();
         }
 
-        private void btnBeer_Click(object sender, EventArgs e)
+        private void btnSell_Click(object sender, EventArgs e)
         {
-            client.SellDrink("Beer");
+            Button button = sender as Button;
+            ConsoleWriteLine(client.SellDrink(button.Text.ToLower()));
+            RefreshDrinksGrid();
         }
 
         private void btnStatus_Click(object sender, EventArgs e)
@@ -94,6 +99,7 @@ namespace WinFormsMainClient
         private void btnReset_Click(object sender, EventArgs e)
         {
             client.ResetMachine();
+            RefreshDrinksGrid();
             ConsoleWriteLine("RECORDS DELETED");
         }
 
@@ -103,6 +109,34 @@ namespace WinFormsMainClient
             double.TryParse(txtBxCost.Text, out cost);
             Drink toAdd = new Drink() { name = txtBxDrinkName.Text, cost = cost, count = (int)nmUDAmount.Value };
             ConsoleWriteLine(client.AddDrink(toAdd));
+            RefreshDrinksGrid();
+        }
+
+        private void RefreshDrinksGrid() 
+        {
+
+            dGridVDrinks.DataSource = client.GetDrinks();
+            dGridVDrinks.Columns["name"].HeaderText = "Name";
+            dGridVDrinks.Columns["name"].DisplayIndex = 0;
+            dGridVDrinks.Columns["cost"].HeaderText = "Cost";
+            dGridVDrinks.Columns["cost"].DisplayIndex = 1;
+            dGridVDrinks.Columns["count"].HeaderText = "Count";
+            dGridVDrinks.Columns["count"].DisplayIndex = 2;
+        }
+
+        private void btnSellSelected_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dGridVDrinks.SelectedRows[0];
+            string drink = selectedRow.Cells["name"].Value.ToString();
+            client.SellDrink(drink);
+            ConsoleWriteLine(drink + " sold.");
+            RefreshDrinksGrid();
+        }
+
+        private void btnSetCash_Click(object sender, EventArgs e)
+        {
+            double.TryParse(txtBxCash.Text, out double newCash);
+            ConsoleWriteLine(client.SetCash(newCash));
         }
     }
 }

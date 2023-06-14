@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormsMainClient
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -33,27 +33,39 @@ namespace WinFormsMainClient
             this.txtBxOutput = new System.Windows.Forms.TextBox();
             this.btnCheckDrinks = new System.Windows.Forms.Button();
             this.grpBxInfo = new System.Windows.Forms.GroupBox();
+            this.grpBxAddDrinks = new System.Windows.Forms.GroupBox();
+            this.btnAddDrink = new System.Windows.Forms.Button();
+            this.txtBxCost = new System.Windows.Forms.TextBox();
+            this.nmUDAmount = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBxDrinkName = new System.Windows.Forms.TextBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnDeleteDrinks = new System.Windows.Forms.Button();
             this.btnStatus = new System.Windows.Forms.Button();
             this.grpBxSell = new System.Windows.Forms.GroupBox();
-            this.btnBeer = new System.Windows.Forms.Button();
-            this.txtBxDrinkName = new System.Windows.Forms.TextBox();
-            this.txtBxCost = new System.Windows.Forms.TextBox();
-            this.nmUDAmount = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAddDrink = new System.Windows.Forms.Button();
+            this.btnSellSelected = new System.Windows.Forms.Button();
+            this.dGridVDrinks = new System.Windows.Forms.DataGridView();
+            this.btnSell2 = new System.Windows.Forms.Button();
+            this.btnSell1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBxCash = new System.Windows.Forms.TextBox();
+            this.btnSetCash = new System.Windows.Forms.Button();
             this.grpBxInfo.SuspendLayout();
-            this.grpBxSell.SuspendLayout();
+            this.grpBxAddDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUDAmount)).BeginInit();
+            this.grpBxSell.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridVDrinks)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(-2, 278);
+            this.textBox1.Location = new System.Drawing.Point(158, 278);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 20);
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(182, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "In progress...";
             // 
             // txtBxOutput
             // 
@@ -62,7 +74,7 @@ namespace WinFormsMainClient
             this.txtBxOutput.Name = "txtBxOutput";
             this.txtBxOutput.ReadOnly = true;
             this.txtBxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBxOutput.Size = new System.Drawing.Size(585, 260);
+            this.txtBxOutput.Size = new System.Drawing.Size(540, 260);
             this.txtBxOutput.TabIndex = 3;
             // 
             // btnCheckDrinks
@@ -77,21 +89,75 @@ namespace WinFormsMainClient
             // 
             // grpBxInfo
             // 
-            this.grpBxInfo.Controls.Add(this.btnAddDrink);
-            this.grpBxInfo.Controls.Add(this.label1);
-            this.grpBxInfo.Controls.Add(this.nmUDAmount);
-            this.grpBxInfo.Controls.Add(this.txtBxCost);
-            this.grpBxInfo.Controls.Add(this.txtBxDrinkName);
+            this.grpBxInfo.Controls.Add(this.txtBxCash);
+            this.grpBxInfo.Controls.Add(this.grpBxAddDrinks);
+            this.grpBxInfo.Controls.Add(this.btnSetCash);
             this.grpBxInfo.Controls.Add(this.btnReset);
             this.grpBxInfo.Controls.Add(this.btnDeleteDrinks);
             this.grpBxInfo.Controls.Add(this.btnStatus);
             this.grpBxInfo.Controls.Add(this.btnCheckDrinks);
             this.grpBxInfo.Location = new System.Drawing.Point(352, 278);
             this.grpBxInfo.Name = "grpBxInfo";
-            this.grpBxInfo.Size = new System.Drawing.Size(245, 245);
+            this.grpBxInfo.Size = new System.Drawing.Size(200, 245);
             this.grpBxInfo.TabIndex = 4;
             this.grpBxInfo.TabStop = false;
             this.grpBxInfo.Text = "Managing";
+            // 
+            // grpBxAddDrinks
+            // 
+            this.grpBxAddDrinks.Controls.Add(this.btnAddDrink);
+            this.grpBxAddDrinks.Controls.Add(this.label3);
+            this.grpBxAddDrinks.Controls.Add(this.label2);
+            this.grpBxAddDrinks.Controls.Add(this.label1);
+            this.grpBxAddDrinks.Controls.Add(this.txtBxCost);
+            this.grpBxAddDrinks.Controls.Add(this.txtBxDrinkName);
+            this.grpBxAddDrinks.Controls.Add(this.nmUDAmount);
+            this.grpBxAddDrinks.Location = new System.Drawing.Point(6, 112);
+            this.grpBxAddDrinks.Name = "grpBxAddDrinks";
+            this.grpBxAddDrinks.Size = new System.Drawing.Size(186, 127);
+            this.grpBxAddDrinks.TabIndex = 7;
+            this.grpBxAddDrinks.TabStop = false;
+            this.grpBxAddDrinks.Text = "Add Drinks";
+            // 
+            // btnAddDrink
+            // 
+            this.btnAddDrink.Location = new System.Drawing.Point(10, 97);
+            this.btnAddDrink.Name = "btnAddDrink";
+            this.btnAddDrink.Size = new System.Drawing.Size(170, 27);
+            this.btnAddDrink.TabIndex = 6;
+            this.btnAddDrink.Text = "Add";
+            this.btnAddDrink.UseVisualStyleBackColor = true;
+            this.btnAddDrink.Click += new System.EventHandler(this.btnAddDrink_Click);
+            // 
+            // txtBxCost
+            // 
+            this.txtBxCost.Location = new System.Drawing.Point(93, 45);
+            this.txtBxCost.Name = "txtBxCost";
+            this.txtBxCost.Size = new System.Drawing.Size(87, 20);
+            this.txtBxCost.TabIndex = 3;
+            // 
+            // nmUDAmount
+            // 
+            this.nmUDAmount.Location = new System.Drawing.Point(93, 71);
+            this.nmUDAmount.Name = "nmUDAmount";
+            this.nmUDAmount.Size = new System.Drawing.Size(87, 20);
+            this.nmUDAmount.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Drink Name:";
+            // 
+            // txtBxDrinkName
+            // 
+            this.txtBxDrinkName.Location = new System.Drawing.Point(93, 19);
+            this.txtBxDrinkName.Name = "txtBxDrinkName";
+            this.txtBxDrinkName.Size = new System.Drawing.Size(87, 20);
+            this.txtBxDrinkName.TabIndex = 3;
             // 
             // btnReset
             // 
@@ -125,80 +191,115 @@ namespace WinFormsMainClient
             // 
             // grpBxSell
             // 
-            this.grpBxSell.Controls.Add(this.btnBeer);
-            this.grpBxSell.Location = new System.Drawing.Point(84, 384);
+            this.grpBxSell.Controls.Add(this.btnSellSelected);
+            this.grpBxSell.Controls.Add(this.dGridVDrinks);
+            this.grpBxSell.Controls.Add(this.btnSell2);
+            this.grpBxSell.Controls.Add(this.btnSell1);
+            this.grpBxSell.Location = new System.Drawing.Point(12, 324);
             this.grpBxSell.Name = "grpBxSell";
-            this.grpBxSell.Size = new System.Drawing.Size(243, 139);
+            this.grpBxSell.Size = new System.Drawing.Size(334, 199);
             this.grpBxSell.TabIndex = 5;
             this.grpBxSell.TabStop = false;
             this.grpBxSell.Text = "Vending";
             // 
-            // btnBeer
+            // btnSellSelected
             // 
-            this.btnBeer.Location = new System.Drawing.Point(9, 19);
-            this.btnBeer.Name = "btnBeer";
-            this.btnBeer.Size = new System.Drawing.Size(85, 35);
-            this.btnBeer.TabIndex = 0;
-            this.btnBeer.Text = "BEER";
-            this.btnBeer.UseVisualStyleBackColor = true;
-            this.btnBeer.Click += new System.EventHandler(this.btnBeer_Click);
+            this.btnSellSelected.Location = new System.Drawing.Point(188, 19);
+            this.btnSellSelected.Name = "btnSellSelected";
+            this.btnSellSelected.Size = new System.Drawing.Size(140, 35);
+            this.btnSellSelected.TabIndex = 2;
+            this.btnSellSelected.Text = "Sell Selected";
+            this.btnSellSelected.UseVisualStyleBackColor = true;
+            this.btnSellSelected.Click += new System.EventHandler(this.btnSellSelected_Click);
             // 
-            // txtBxDrinkName
+            // dGridVDrinks
             // 
-            this.txtBxDrinkName.Location = new System.Drawing.Point(102, 73);
-            this.txtBxDrinkName.Name = "txtBxDrinkName";
-            this.txtBxDrinkName.Size = new System.Drawing.Size(89, 20);
-            this.txtBxDrinkName.TabIndex = 3;
+            this.dGridVDrinks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dGridVDrinks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridVDrinks.Location = new System.Drawing.Point(6, 60);
+            this.dGridVDrinks.MultiSelect = false;
+            this.dGridVDrinks.Name = "dGridVDrinks";
+            this.dGridVDrinks.ReadOnly = true;
+            this.dGridVDrinks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGridVDrinks.Size = new System.Drawing.Size(322, 133);
+            this.dGridVDrinks.TabIndex = 1;
             // 
-            // txtBxCost
+            // btnSell2
             // 
-            this.txtBxCost.Location = new System.Drawing.Point(102, 99);
-            this.txtBxCost.Name = "txtBxCost";
-            this.txtBxCost.Size = new System.Drawing.Size(89, 20);
-            this.txtBxCost.TabIndex = 3;
+            this.btnSell2.Location = new System.Drawing.Point(97, 19);
+            this.btnSell2.Name = "btnSell2";
+            this.btnSell2.Size = new System.Drawing.Size(85, 35);
+            this.btnSell2.TabIndex = 0;
+            this.btnSell2.Text = "Water";
+            this.btnSell2.UseVisualStyleBackColor = true;
+            this.btnSell2.Click += new System.EventHandler(this.btnSell_Click);
             // 
-            // nmUDAmount
+            // btnSell1
             // 
-            this.nmUDAmount.Location = new System.Drawing.Point(102, 125);
-            this.nmUDAmount.Name = "nmUDAmount";
-            this.nmUDAmount.Size = new System.Drawing.Size(89, 20);
-            this.nmUDAmount.TabIndex = 4;
+            this.btnSell1.Location = new System.Drawing.Point(6, 19);
+            this.btnSell1.Name = "btnSell1";
+            this.btnSell1.Size = new System.Drawing.Size(85, 35);
+            this.btnSell1.TabIndex = 0;
+            this.btnSell1.Text = "Beer";
+            this.btnSell1.UseVisualStyleBackColor = true;
+            this.btnSell1.Click += new System.EventHandler(this.btnSell_Click);
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Cost in €:";
             // 
-            // btnAddDrink
+            // label3
             // 
-            this.btnAddDrink.Location = new System.Drawing.Point(105, 151);
-            this.btnAddDrink.Name = "btnAddDrink";
-            this.btnAddDrink.Size = new System.Drawing.Size(87, 27);
-            this.btnAddDrink.TabIndex = 6;
-            this.btnAddDrink.Text = "Add";
-            this.btnAddDrink.UseVisualStyleBackColor = true;
-            this.btnAddDrink.Click += new System.EventHandler(this.btnAddDrink_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Amount to Add:";
             // 
-            // Form1
+            // txtBxCash
+            // 
+            this.txtBxCash.Location = new System.Drawing.Point(6, 72);
+            this.txtBxCash.Name = "txtBxCash";
+            this.txtBxCash.Size = new System.Drawing.Size(90, 20);
+            this.txtBxCash.TabIndex = 8;
+            // 
+            // btnSetCash
+            // 
+            this.btnSetCash.Location = new System.Drawing.Point(102, 72);
+            this.btnSetCash.Name = "btnSetCash";
+            this.btnSetCash.Size = new System.Drawing.Size(90, 21);
+            this.btnSetCash.TabIndex = 2;
+            this.btnSetCash.Text = "Set Cash";
+            this.btnSetCash.UseVisualStyleBackColor = true;
+            this.btnSetCash.Click += new System.EventHandler(this.btnSetCash_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 535);
+            this.ClientSize = new System.Drawing.Size(564, 529);
             this.Controls.Add(this.grpBxSell);
             this.Controls.Add(this.grpBxInfo);
             this.Controls.Add(this.txtBxOutput);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.MaximumSize = new System.Drawing.Size(580, 568);
+            this.MinimumSize = new System.Drawing.Size(580, 568);
+            this.Name = "MainForm";
+            this.Text = "Vending Machine Service";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpBxInfo.ResumeLayout(false);
             this.grpBxInfo.PerformLayout();
-            this.grpBxSell.ResumeLayout(false);
+            this.grpBxAddDrinks.ResumeLayout(false);
+            this.grpBxAddDrinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUDAmount)).EndInit();
+            this.grpBxSell.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGridVDrinks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,7 +312,7 @@ namespace WinFormsMainClient
         private System.Windows.Forms.GroupBox grpBxInfo;
         private System.Windows.Forms.Button btnDeleteDrinks;
         private System.Windows.Forms.GroupBox grpBxSell;
-        private System.Windows.Forms.Button btnBeer;
+        private System.Windows.Forms.Button btnSell1;
         private System.Windows.Forms.Button btnStatus;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnAddDrink;
@@ -219,6 +320,14 @@ namespace WinFormsMainClient
         private System.Windows.Forms.NumericUpDown nmUDAmount;
         private System.Windows.Forms.TextBox txtBxCost;
         private System.Windows.Forms.TextBox txtBxDrinkName;
+        private System.Windows.Forms.Button btnSell2;
+        private System.Windows.Forms.DataGridView dGridVDrinks;
+        private System.Windows.Forms.Button btnSellSelected;
+        private System.Windows.Forms.GroupBox grpBxAddDrinks;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBxCash;
+        private System.Windows.Forms.Button btnSetCash;
     }
 }
 

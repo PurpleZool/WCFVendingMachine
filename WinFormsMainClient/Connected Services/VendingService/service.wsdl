@@ -25,6 +25,12 @@
   <wsdl:message name="IMainService_DeleteDrinks_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteDrinksResponse" />
   </wsdl:message>
+  <wsdl:message name="IMainService_SetCash_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetCash" />
+  </wsdl:message>
+  <wsdl:message name="IMainService_SetCash_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCashResponse" />
+  </wsdl:message>
   <wsdl:message name="IMainService_ResetMachine_InputMessage">
     <wsdl:part name="parameters" element="tns:ResetMachine" />
   </wsdl:message>
@@ -67,6 +73,10 @@
     <wsdl:operation name="DeleteDrinks">
       <wsdl:input wsaw:Action="http://tempuri.org/IMainService/DeleteDrinks" message="tns:IMainService_DeleteDrinks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMainService/DeleteDrinksResponse" message="tns:IMainService_DeleteDrinks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCash">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMainService/SetCash" message="tns:IMainService_SetCash_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMainService/SetCashResponse" message="tns:IMainService_SetCash_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResetMachine">
       <wsdl:input wsaw:Action="http://tempuri.org/IMainService/ResetMachine" message="tns:IMainService_ResetMachine_InputMessage" />
@@ -111,6 +121,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteDrinks">
       <soap:operation soapAction="http://tempuri.org/IMainService/DeleteDrinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCash">
+      <soap:operation soapAction="http://tempuri.org/IMainService/SetCash" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
