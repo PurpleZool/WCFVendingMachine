@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
 using WCFServiceLibrary.DrinkObjs;
 
 namespace WCFServiceLibrary
@@ -11,6 +7,8 @@ namespace WCFServiceLibrary
     [ServiceContract]
     public interface IMainService
     {
+        [OperationContract]
+        string GetHtml();
         [OperationContract]
         List<Drink> GetDrinks();
         [OperationContract]

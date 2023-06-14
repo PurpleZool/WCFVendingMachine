@@ -7,6 +7,12 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServiceLibrary.DrinkObjs" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IMainService_GetHtml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtml" />
+  </wsdl:message>
+  <wsdl:message name="IMainService_GetHtml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlResponse" />
+  </wsdl:message>
   <wsdl:message name="IMainService_GetDrinks_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDrinks" />
   </wsdl:message>
@@ -62,6 +68,10 @@
     <wsdl:part name="parameters" element="tns:AddDrinkResponse" />
   </wsdl:message>
   <wsdl:portType name="IMainService">
+    <wsdl:operation name="GetHtml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMainService/GetHtml" message="tns:IMainService_GetHtml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMainService/GetHtmlResponse" message="tns:IMainService_GetHtml_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetDrinks">
       <wsdl:input wsaw:Action="http://tempuri.org/IMainService/GetDrinks" message="tns:IMainService_GetDrinks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMainService/GetDrinksResponse" message="tns:IMainService_GetDrinks_OutputMessage" />
@@ -101,6 +111,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMainService" type="tns:IMainService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetHtml">
+      <soap:operation soapAction="http://tempuri.org/IMainService/GetHtml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetDrinks">
       <soap:operation soapAction="http://tempuri.org/IMainService/GetDrinks" style="document" />
       <wsdl:input>

@@ -171,6 +171,12 @@ namespace WinFormsMainClient.VendingService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="VendingService.IMainService")]
     public interface IMainService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/GetHtml", ReplyAction="http://tempuri.org/IMainService/GetHtmlResponse")]
+        string GetHtml();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/GetHtml", ReplyAction="http://tempuri.org/IMainService/GetHtmlResponse")]
+        System.Threading.Tasks.Task<string> GetHtmlAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainService/GetDrinks", ReplyAction="http://tempuri.org/IMainService/GetDrinksResponse")]
         WinFormsMainClient.VendingService.Drink[] GetDrinks();
         
@@ -251,6 +257,14 @@ namespace WinFormsMainClient.VendingService {
         
         public MainServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string GetHtml() {
+            return base.Channel.GetHtml();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetHtmlAsync() {
+            return base.Channel.GetHtmlAsync();
         }
         
         public WinFormsMainClient.VendingService.Drink[] GetDrinks() {

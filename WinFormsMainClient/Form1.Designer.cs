@@ -51,11 +51,15 @@ namespace WinFormsMainClient
             this.label3 = new System.Windows.Forms.Label();
             this.txtBxCash = new System.Windows.Forms.TextBox();
             this.btnSetCash = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpBxInfo.SuspendLayout();
             this.grpBxAddDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUDAmount)).BeginInit();
             this.grpBxSell.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridVDrinks)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -69,12 +73,12 @@ namespace WinFormsMainClient
             // 
             // txtBxOutput
             // 
-            this.txtBxOutput.Location = new System.Drawing.Point(12, 12);
+            this.txtBxOutput.Location = new System.Drawing.Point(12, 34);
             this.txtBxOutput.Multiline = true;
             this.txtBxOutput.Name = "txtBxOutput";
             this.txtBxOutput.ReadOnly = true;
             this.txtBxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBxOutput.Size = new System.Drawing.Size(540, 260);
+            this.txtBxOutput.Size = new System.Drawing.Size(540, 238);
             this.txtBxOutput.TabIndex = 3;
             // 
             // btnCheckDrinks
@@ -279,6 +283,30 @@ namespace WinFormsMainClient
             this.btnSetCash.UseVisualStyleBackColor = true;
             this.btnSetCash.Click += new System.EventHandler(this.btnSetCash_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(564, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +316,8 @@ namespace WinFormsMainClient
             this.Controls.Add(this.grpBxInfo);
             this.Controls.Add(this.txtBxOutput);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(580, 568);
             this.MinimumSize = new System.Drawing.Size(580, 568);
             this.Name = "MainForm";
@@ -300,6 +330,8 @@ namespace WinFormsMainClient
             ((System.ComponentModel.ISupportInitialize)(this.nmUDAmount)).EndInit();
             this.grpBxSell.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGridVDrinks)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,6 +360,9 @@ namespace WinFormsMainClient
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBxCash;
         private System.Windows.Forms.Button btnSetCash;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 

@@ -127,16 +127,27 @@ namespace WinFormsMainClient
         private void btnSellSelected_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dGridVDrinks.SelectedRows[0];
+            int oldIdx = selectedRow.Index;
             string drink = selectedRow.Cells["name"].Value.ToString();
             client.SellDrink(drink);
             ConsoleWriteLine(drink + " sold.");
             RefreshDrinksGrid();
+            if (dGridVDrinks.Rows.Count >= oldIdx + 1) 
+            {
+                dGridVDrinks.Rows[oldIdx].Selected = true;
+            }
         }
 
         private void btnSetCash_Click(object sender, EventArgs e)
         {
             double.TryParse(txtBxCash.Text, out double newCash);
             ConsoleWriteLine(client.SetCash(newCash));
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WebForm webForm = new WebForm("Help",client.GetHtml());
+            webForm.ShowDialog();
         }
     }
 }

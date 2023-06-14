@@ -11,8 +11,27 @@ namespace WCFServiceLibrary
         private static string someFreeFolder = @"C:\FreeFolder";
         private static string savePath = Path.Combine(someFreeFolder,"machineSave.txt");
 
-
         #region CONTRACT METHODS
+
+        public string GetHtml() 
+        {
+            string html = "<!DOCTYPE html><html><head><title>VendingService</title></head><body><h1>VendingService</h1>" +
+                "<p>A WCF service that simulates a 24/7 vending machine for beverages.</p>" +
+                "<h2>Available Functions</h2>" +
+                "<ul><li><strong>GetHtml()</strong>: Gets the HTML text of the page.</li>" +
+                "<li><strong>GetDrinks()</strong>: Gets the list of available drinks.</li>" +
+                "<li><strong>SetDrinks(List&lt;Drink&gt; newDrinks)</strong>: Sets the list of available drinks.</li>" +
+                "<li><strong>DeleteDrinks()</strong>: Deletes all drinks from the machine.</li>" +
+                "<li><strong>SetCash(double newCash)</strong>: Sets the available cash in the machine.</li>" +
+                "<li><strong>ResetMachine()</strong>: Resets the machine to its initial state.</li>" +
+                "<li><strong>GetVendingObj()</strong>: Gets the current VendingMachine object.</li>" +
+                "<li><strong>GetStatus()</strong>: Gets the current status of the machine.</li>" +
+                "<li><strong>SellDrink(string drinkName)</strong>: Sells a specific drink by its name.</li>" +
+                "<li><strong>AddDrink(Drink drink)</strong>: Adds a new drink to the machine.</li></ul></body></html>";
+            return html;
+        }
+
+
 
         public List<Drink> GetDrinks()
         {
